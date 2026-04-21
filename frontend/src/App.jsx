@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-const API_URL = 'http://localhost:4000/api/items';
+const API_URL = 'http://localhost:5000/api/stocks';
 
 function App() {
   const [items, setItems] = useState([]);
