@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Screws",
+    "quantity": 232,
+    "price": 1
+  },
+  {
+    "id": "2",
+    "name": "Cardboard boxes",
+    "quantity": 54,
+    "price": 2.5
+  },
+  {
+    "id": "3",
+    "name": "Product labels",
+    "quantity": 250,
+    "price": 0.12
+  },
+  {
+    "id": "1776690776926",
+    "name": "iphone",
+    "quantity": 51,
+    "price": 100
+  }
+]
