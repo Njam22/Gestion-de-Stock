@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 const API_URL = 'http://localhost:5000/api/stocks';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [items, setItems] = useState([]);
   const [form, setForm] = useState({ name: '', quantity: 0, price: 0 });
   const [isLoading, setIsLoading] = useState(false);
@@ -165,6 +166,39 @@ function App() {
   const totalItems = useMemo(() => items.reduce((sum, item) => sum + item.quantity, 0), [items]);
   const totalValue = useMemo(() => items.reduce((sum, item) => sum + item.quantity * item.price, 0), [items]);
 
+  const handleLogin = (username, password) => {
+    // Simple login - in real app, call API
+    if (username && password) {
+      setIsLoggedIn(true);
+    }
+  };
+
+  if (!isLoggedIn) {
+    return (
+      <div className="login-container">
+        <div className="login-card">
+          <h2>Connexion</h2>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            const username = e.target.username.value;
+            const password = e.target.password.value;
+            handleLogin(username, password);
+          }}>
+            <div className="input-group">
+              <label>Nom d'utilisateur</label>
+              <input type="text" name="username" required />
+            </div>
+            <div className="input-group">
+              <label>Mot de passe</label>
+              <input type="password" name="password" required />
+            </div>
+            <button type="submit" className="login-btn">Se connecter</button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="app-shell">
       <div className="panel">
@@ -172,6 +206,7 @@ function App() {
           <header>
             <h1>Gestion de stock</h1>
             <p>Application complète React + Node pour suivre les articles, les quantités et les valeurs.</p>
+            <button onClick={() => setIsLoggedIn(false)} className="logout-btn">Déconnexion</button>
           </header>
 
           <div className="page-nav">
